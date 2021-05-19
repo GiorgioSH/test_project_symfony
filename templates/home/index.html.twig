@@ -1,0 +1,23 @@
+{% extends "base.html.twig"%}
+
+{% block title %} Accueil {% endblock %}
+
+{% block body %} 
+
+    <h1> Bienvenu sur la page d'accueil </h2>
+    <div class="row">
+        {% for article in articles %}
+            <div class="card col-md-4" style="width:18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ article.title }}
+
+                    </h5>
+                    <p class="card-text" style="max-height:250px; height:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                    {{ article.content}}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
