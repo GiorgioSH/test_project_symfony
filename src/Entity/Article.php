@@ -35,7 +35,7 @@ class Article
     private $Content;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime" , nullable=true)
      */
     private $CreatedAt;
 
@@ -44,11 +44,16 @@ class Article
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -131,4 +136,21 @@ class Article
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+    public function __toString()
+    {
+    return $this->Title;
+    }
+
 }
